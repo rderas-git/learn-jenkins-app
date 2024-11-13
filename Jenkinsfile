@@ -5,7 +5,8 @@ pipeline {
         stage('Hello') {
             steps {
                 echo 'Hello World'
-                echo 'This line represents another change'
+                echo 'This line represents another change that needs to be committed'
+                echo 'To be committed'
             }
         }
     }
