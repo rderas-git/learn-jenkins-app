@@ -29,7 +29,7 @@ pipeline {
                 echo 'Testing whether the Index.html file exists ...'
                 sh '''
                     test -f build/$INDEX_FILE
-                    npm test
+                    CI=true npm test
                 '''
             }
         }
