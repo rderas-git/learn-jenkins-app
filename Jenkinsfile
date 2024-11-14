@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        INDEX_FILE = 'index.html'
+    }
+
     stages {
         stage('Build') {
             agent {
@@ -17,6 +21,15 @@ pipeline {
                     npm ci
                     npm run build
                     ls -la
+                '''
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing whether the Index.html file exists ...'
+                sh '''
+                    test -f build/$INDEX_FILE
+                    npm test
                 '''
             }
         }
